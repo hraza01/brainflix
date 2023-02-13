@@ -12,6 +12,13 @@ dist
 dist-ssr
 *.local
 
+# css
+*.css
+*.css.map
+
+# firebase cache
+*.cache
+
 # production
 /build
 
@@ -31,3 +38,4 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+/BrainFlix-Package-Sprint-1/
