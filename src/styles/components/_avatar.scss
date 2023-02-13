@@ -1,0 +1,16 @@
+@use "../abstracts";
+@use "../base";
+
+.avatar {
+    width: 3.6rem;
+    height: 3.6rem;
+    object-fit: cover;
+    object-position: left;
+    border-radius: 50%;
+    background-color: abstracts.color("secondary", "Mercury");
+
+    @include abstracts.respond-to("tablet") {
+        width: 4rem;
+        height: 4rem;
+    }
+}
