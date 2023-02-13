@@ -1,7 +1,7 @@
 {
   "hosting": {
     "site": "brainflix",
-    "public": "build",
+    "public": "dist",
     "ignore": [
       "firebase.json",
       "**/.*",

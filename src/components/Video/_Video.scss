@@ -1,0 +1,113 @@
+@use "../../styles/abstracts";
+@use "../../styles/base";
+
+
+.video {
+
+    &__wrapper {
+
+        @include abstracts.respond-to("desktop") {
+            margin: 0 auto;
+            max-width: 102rem;
+            display: flex;
+            gap: 2.4rem;
+        }
+    }
+
+    &__section-wrapper {
+        padding-bottom: 1.6rem;
+    }
+
+    &__information {
+        @include abstracts.section-wrapper();
+
+        @include abstracts.respond-to("desktop") {
+            width: 62rem;
+        }
+    }
+
+    &__container {
+        transition: all 0.5s;
+
+        &:hover {
+            box-shadow: 0 2.4rem 6.4rem -1rem grey;
+        }
+    }
+
+    &__player {
+        display: block;
+        aspect-ratio: 16 / 9;
+        max-height: 70rem;
+        width: 100%;
+        background-color: abstracts.color("secondary", "BrainFlix-DarkBlack");
+    }
+
+    &__title {
+        padding: 1.6rem 0;
+    }
+
+    &__details {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        justify-items: start;
+        row-gap: 1.6rem;
+        column-gap: 4rem;
+        border-top: 2px solid abstracts.color("secondary", "Mercury");
+        border-bottom: 2px solid abstracts.color("secondary", "Mercury");
+        padding: 1.6rem 0;
+        color: abstracts.color("primary", "Silver");
+        margin-bottom: 1.6rem;
+
+        @include abstracts.respond-to("tablet") {
+            border-top: none;
+            display: flex;
+            justify-content: flex-end;
+            gap: 2.4rem;
+            position: relative;
+        }
+
+        @include abstracts.respond-to("desktop") {
+            padding-right: 2.4rem;
+            margin-right: -2.4rem;
+        }
+    }
+
+    &__channel {
+        font-weight: map-get(abstracts.$font-weights, "semi-bold");
+        color: abstracts.color("primary", "BrainFlix-Black");
+
+        @include abstracts.respond-to("tablet") {
+            margin-right: auto;
+        }
+    }
+
+    &__timestamp {
+        @include abstracts.respond-to("tablet") {
+            position: absolute;
+            margin-left: 6.4rem;
+            left: 10%;
+        }
+    }
+
+    &__data-icon-wrapper {
+        //justify-self: flex-end;
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+    }
+
+    &__data-icon {
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+
+    &__description {
+        margin-bottom: 1.6rem;
+    }
+
+    &__comment-count {
+        font-weight: map-get(abstracts.$font-weights, "semi-bold");
+        margin-bottom: 1.6rem;
+    }
+}

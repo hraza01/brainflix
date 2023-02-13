@@ -1,0 +1,46 @@
+@use "../abstracts";
+@use "../base";
+
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 0 2.4rem;
+    height: 4rem;
+    margin: 0 auto;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    font-size: 1.2rem;
+    color: abstracts.color("primary", "White");
+    border: none;
+    background-color: abstracts.color("primary", "BrainFlix-Blue");
+    transition: all 0.33s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        background-color: abstracts.color("secondary", "BrainFlix-DarkBlue");
+    }
+
+    @include abstracts.respond-to("tablet") {
+        width: 16.4rem;
+        height: 4rem;
+        padding: 0 2.4rem;
+        margin-left: auto;
+    }
+}
+
+.btn-logo {
+    display: inline-block;
+}
+
+.btn-text {
+    margin: 0 auto;
+    padding-right: 3.2rem;
+
+    @include abstracts.respond-to("tablet") {
+        padding-right: 0;
+    }
+}
