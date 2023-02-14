@@ -1,9 +1,9 @@
 import React from 'react';
-import CommentItem from "./CommentItem.jsx";
-import moment from "moment";
-import "./_Comments.scss"
+import moment from 'moment';
+import CommentItem from './CommentItem';
+import './_Comments.scss';
 
-const Comments = ({data}) => {
+function Comments({ data }) {
   return (
     <div className="comment__container">
       {data.map((comment) => (
@@ -12,11 +12,11 @@ const Comments = ({data}) => {
           name={comment.name}
           value={comment.comment}
           likes={comment.likes}
-          timestamp={moment(comment.timestamp).format("MM/DD/YYYY")}
+          timestamp={moment(comment.timestamp).format('MM/DD/YYYY')}
         />
       ))}
     </div>
   );
-};
+}
 
 export default Comments;

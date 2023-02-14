@@ -1,129 +1,126 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the comment component.
 // -----------------------------------------------------------------------------
-@use "../../styles/abstracts";
-@use "../../styles/base";
-@use "../../styles/components";
-
+@use '../../styles/abstracts';
+@use '../../styles/base';
+@use '../../styles/components';
 
 .comment {
+  &__form-container {
+    @include abstracts.flex-center();
+    align-items: flex-start;
+    gap: 1.6rem;
+    margin: 1.6rem auto;
 
-    &__form-container {
-        @include abstracts.flex-center();
-        align-items: flex-start;
-        gap: 1.6rem;
-        margin: 1.6rem auto;
-
-        @include abstracts.respond-to("tablet") {
-            margin: 1.6rem 0;
-            padding: 0;
-            display: flex;
-            justify-content: flex-start;
-            position: relative;
-        }
-
-        @include abstracts.respond-to("desktop") {
-        }
+    @include abstracts.respond-to('tablet') {
+      margin: 1.6rem 0;
+      padding: 0;
+      display: flex;
+      justify-content: flex-start;
+      position: relative;
     }
 
-    &__form {
-        @extend .form;
+    @include abstracts.respond-to('desktop') {
+    }
+  }
+
+  &__form {
+    @extend .form;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.6rem;
+
+    @include abstracts.respond-to('tablet') {
+      margin: 0 auto;
+      padding: 1.6rem 0;
     }
 
-    &__container {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 1.6rem;
+    @include abstracts.respond-to('desktop') {
+      //max-width: 50rem;
+      padding: 3.2rem 0;
+    }
+  }
 
-        @include abstracts.respond-to("tablet") {
-            margin: 0 auto;
-            padding: 1.6rem 0;
-        }
+  &__avatar {
+    @extend .avatar;
 
-        @include abstracts.respond-to("desktop") {
-            //max-width: 50rem;
-            padding: 3.2rem 0;
-        }
+    &--form {
+      margin-top: 2.4rem;
+    }
+  }
+
+  &__item {
+    @include abstracts.flex-center();
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1.6rem;
+    padding: 1.6rem 0;
+    border-top: 2px solid abstracts.color('secondary', 'Mercury');
+
+    &:last-child {
+      border-bottom: 2px solid abstracts.color('secondary', 'Mercury');
     }
 
-    &__avatar {
-        @extend .avatar;
+    @include abstracts.respond-to('desktop') {
+      padding-right: 1.6rem;
+      margin-right: -2.4rem;
+    }
+  }
 
-        &--form {
-            margin-top: 2.4rem;
-        }
+  &__description {
+    @include abstracts.grid(repeat(2, 1fr), 1fr);
+    width: 100%;
+    justify-items: start;
+    align-items: start;
+  }
+
+  &__time {
+    color: abstracts.color('primary', 'Silver');
+    justify-self: end;
+  }
+
+  &__text {
+    grid-column: 1 / -1;
+    padding-top: 0.8rem;
+    word-break: break-word;
+  }
+
+  &__interactivity {
+    display: flex;
+    justify-self: flex-end;
+    gap: 1.2rem;
+    padding: 0.4rem;
+  }
+
+  &__likes {
+    margin-top: 0.8rem;
+  }
+
+  &__btn-container {
+    position: relative;
+    width: 100%;
+
+    @include abstracts.respond-to('tablet') {
+      width: fit-content;
+      position: absolute;
+      right: 0;
+      bottom: 50%;
+      transform: translate(0, 50%);
+    }
+  }
+
+  &__btn {
+    @extend .btn;
+
+    &-logo {
+      @extend .btn-logo;
     }
 
-    &__item {
-        @include abstracts.flex-center();
-        align-items: flex-start;
-        justify-content: flex-start;
-        gap: 1.6rem;
-        padding: 1.6rem 0;
-        border-top: 2px solid abstracts.color("secondary", "Mercury");
-
-        &:last-child {
-            border-bottom: 2px solid abstracts.color("secondary", "Mercury");
-        }
-
-        @include abstracts.respond-to("desktop") {
-            padding-right: 1.6rem;
-            margin-right: -2.4rem;
-        }
+    &-text {
+      @extend .btn-text;
     }
-
-    &__description {
-        @include abstracts.grid(repeat(2, 1fr), 1fr);
-        width: 100%;
-        justify-items: start;
-        align-items: start;
-    }
-
-    &__time {
-        color: abstracts.color("primary", "Silver");
-        justify-self: end;
-    }
-
-    &__text {
-        grid-column: 1 / -1;
-        padding-top: 0.8rem;
-        word-break: break-word;
-    }
-
-    &__interactivity {
-        display: flex;
-        justify-self: flex-end;
-        gap: 1.2rem;
-        padding: 0.4rem;
-    }
-
-    &__likes {
-        margin-top: 0.8rem;
-    }
-
-    &__btn-container {
-        position: relative;
-        width: 100%;
-
-        @include abstracts.respond-to("tablet") {
-            width: fit-content;
-            position: absolute;
-            right: 0;
-            bottom: 50%;
-            transform: translate(0, 50%);
-        }
-    }
-
-    &__btn {
-        @extend .btn;
-
-        &-logo {
-            @extend .btn-logo;
-        }
-
-        &-text {
-            @extend .btn-text;
-        }
-    }
+  }
 }
-
