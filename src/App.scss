@@ -1,0 +1,11 @@
+.app {
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+    }
+
+    &__content {
+        flex-grow: 1;
+    }
+}

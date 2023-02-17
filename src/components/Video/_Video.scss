@@ -2,14 +2,6 @@
 @use '../../styles/base';
 
 .video {
-  &__wrapper {
-    @include abstracts.respond-to('desktop') {
-      margin: 0 auto;
-      max-width: 102rem;
-      display: flex;
-      gap: 2.4rem;
-    }
-  }
 
   &__section-wrapper {
     padding-bottom: 1.6rem;
