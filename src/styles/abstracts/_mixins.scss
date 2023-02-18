@@ -9,63 +9,63 @@
 /// @param {String} $breakpoint - Breakpoint
 /// @requires $breakpoints
 @mixin respond-to($breakpoint) {
-  $raw-query: map-get(variables.$breakpoints, $breakpoint);
+    $raw-query: map-get(variables.$breakpoints, $breakpoint);
 
-  @if $raw-query {
-    $query: if(
-      type-of($raw-query) == 'string',
-      unquote($raw-query),
-      inspect($raw-query)
-    );
+    @if $raw-query {
+        $query: if(
+                type-of($raw-query) == 'string',
+                unquote($raw-query),
+                inspect($raw-query)
+        );
 
-    @media #{$query} {
-      @content;
-    }
-  } @else {
-    @error 'No value found for `#{$breakpoint}`. '
+        @media #{$query} {
+            @content;
+        }
+    } @else {
+        @error 'No value found for `#{$breakpoint}`. '
          + 'Please make sure it is defined in `$breakpoints` map.';
-  }
+    }
 }
 
 /// Make an element a flexbox with centered sub-elements
 /// @param {value} $direction - column/row
 @mixin flex-center($direction: row) {
-  display: flex;
-  flex-direction: $direction;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
 }
 
 /// Make an element a grid container with $column and $rows
 /// @param {value} $direction - column/row
 @mixin grid($column, $row) {
-  display: grid;
-  grid-template-columns: $column;
-  grid-template-rows: $row;
+    display: grid;
+    grid-template-columns: $column;
+    grid-template-rows: $row;
 }
 
 /// Default section wrapper for all pages except hero section
 @mixin section-wrapper() {
-  margin: 0 auto;
-  max-width: map-get(variables.$container-width, 'mobile');
+    margin: 0 auto;
+    max-width: map-get(variables.$container-width, 'mobile');
 
-  @include respond-to('tablet') {
-    max-width: map-get(variables.$container-width, 'tablet');
-    padding: 1.2rem 0;
-  }
+    @include respond-to('tablet') {
+        max-width: map-get(variables.$container-width, 'tablet');
+        padding: 1.2rem 0;
+    }
 
-  @include respond-to('desktop') {
-    max-width: map-get(variables.$container-width, 'desktop');
-    padding: 1.2rem 0;
-  }
+    @include respond-to('desktop') {
+        max-width: map-get(variables.$container-width, 'desktop');
+        padding: 1.2rem 0;
+    }
 }
 
 /// Default section heading for all sections except hero section
 @mixin section-heading() {
-  padding: 2.4rem 0 1.6rem;
+    padding: 2.4rem 0 1.6rem;
 
-  @include respond-to('tablet') {
-    line-height: 3.2rem;
-    padding: 4.8rem 0 3.6rem;
-  }
+    @include respond-to('tablet') {
+        line-height: 3.2rem;
+        padding: 4.8rem 0 3.6rem;
+    }
 }

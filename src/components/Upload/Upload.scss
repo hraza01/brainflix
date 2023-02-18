@@ -7,118 +7,118 @@
 
 .upload {
 
-  border-top: 1px solid abstracts.color("secondary", "Mercury");
-  padding-top: 2.4rem;
+    border-top: 1px solid abstracts.color("secondary", "Mercury");
+    padding-top: 2.4rem;
 
-  &__heading {
-    @include abstracts.section-wrapper();
-  }
-  &__form-container {
-    @include abstracts.section-wrapper();
-    @include abstracts.flex-center();
-    align-items: flex-start;
-    gap: 1.6rem;
-    margin: 1.6rem auto;
-
-    @include abstracts.respond-to('desktop') {
-      margin: 0 auto;
-    }
-  }
-
-  &__form {
-    @extend .form;
-
-
-
-    @include abstracts.respond-to('tablet') {
-      width: 100%;
-
-      & input,
-      & textarea {
-      width: 100%;
+    &__heading {
+        @include abstracts.section-wrapper();
     }
 
-      & textarea {
-        height: 8.4rem;
-      }
+    &__form-container {
+        @include abstracts.section-wrapper();
+        @include abstracts.flex-center();
+        align-items: flex-start;
+        gap: 1.6rem;
+        margin: 1.6rem auto;
+
+        @include abstracts.respond-to('desktop') {
+            margin: 0 auto;
+        }
     }
 
-  }
+    &__form {
+        @extend .form;
 
-  &__form-content {
-    width: 100%;
 
-    @include abstracts.respond-to('desktop') {
-      border-top: 1px solid abstracts.color("secondary", "Mercury");
-      padding-top: 2.4rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 2.4rem;
-    }
-  }
+        @include abstracts.respond-to('tablet') {
+            width: 100%;
 
-  &__fields {
-    width: 100%;
-  }
+            & input,
+            & textarea {
+                width: 100%;
+            }
 
-  &__img {
-    margin-bottom: 2.4rem;
+            & textarea {
+                height: 8.4rem;
+            }
+        }
 
-    @include abstracts.respond-to('tablet') {
-      max-width: 50%;
     }
 
-    @include abstracts.respond-to('desktop') {
-      max-width: 32rem;
-    }
-  }
+    &__form-content {
+        width: 100%;
 
-
-  &__video-thumbnail {
-    border-radius: 4px;
-  }
-
-  &__btn-container {
-    text-decoration: none;
-    width: 100%;
-
-    @include abstracts.respond-to('tablet') {
-      border-top: 1px solid abstracts.color("secondary", "Mercury");
-      padding-top: 2.4rem;
-      display: flex;
-      flex-direction: row-reverse;
-      justify-content: end;
-      gap: 2.4rem;
+        @include abstracts.respond-to('desktop') {
+            border-top: 1px solid abstracts.color("secondary", "Mercury");
+            padding-top: 2.4rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 2.4rem;
+        }
     }
 
-  }
-
-  &__btn {
-    @extend .btn;
-    margin-bottom: 2.4rem;
-
-    @include abstracts.respond-to('tablet') {
-      margin: 0;
+    &__fields {
+        width: 100%;
     }
 
-    &-logo {
-      @extend .btn-logo;
+    &__img {
+        margin-bottom: 2.4rem;
+
+        @include abstracts.respond-to('tablet') {
+            max-width: 50%;
+        }
+
+        @include abstracts.respond-to('desktop') {
+            max-width: 32rem;
+        }
     }
 
-    &-text {
-      @extend .btn-text;
+
+    &__video-thumbnail {
+        border-radius: 4px;
     }
 
-    &--cancel {
-      font-weight: 600;
-      justify-content: center;
-      color: abstracts.color("primary", "BrainFlix-Blue");
-      background-color: transparent;
+    &__btn-container {
+        text-decoration: none;
+        width: 100%;
 
-      &:hover {
-        color: abstracts.color("secondary", "BrainFlix-DarkBlue");
-        background-color: transparent;
-      }
+        @include abstracts.respond-to('tablet') {
+            border-top: 1px solid abstracts.color("secondary", "Mercury");
+            padding-top: 2.4rem;
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: end;
+            gap: 2.4rem;
+        }
+
     }
-  }
+
+    &__btn {
+        @extend .btn;
+        margin-bottom: 2.4rem;
+
+        @include abstracts.respond-to('tablet') {
+            margin: 0;
+        }
+
+        &-logo {
+            @extend .btn-logo;
+        }
+
+        &-text {
+            @extend .btn-text;
+        }
+
+        &--cancel {
+            font-weight: 600;
+            justify-content: center;
+            color: abstracts.color("primary", "BrainFlix-Blue");
+            background-color: transparent;
+
+            &:hover {
+                color: abstracts.color("secondary", "BrainFlix-DarkBlue");
+                background-color: transparent;
+            }
+        }
+    }
 }
