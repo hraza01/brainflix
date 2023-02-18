@@ -17,10 +17,7 @@ function VideoDetail({
     <div>
       <h1 className="video__title">{title}</h1>
       <div className="video__details">
-        <p className="video__channel">
-          By
-          {channel}
-        </p>
+        <p className="video__channel">By {channel}</p>
         <div className="video__data-icon-wrapper">
           <img className="video__data-icon" src={viewsIcon} alt="views" />
           <p className="video__views">{views}</p>
@@ -33,7 +30,7 @@ function VideoDetail({
           <p className="video__likes">{likes}</p>
         </div>
       </div>
-      <p className="video__description">{description}</p>
+      <article className="video__description">{description}</article>
       <p className="video__comment-count">{commentCount} Comments</p>
     </div>
   );

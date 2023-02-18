@@ -1,30 +1,56 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './_Video.scss';
 import { useParams } from 'react-router-dom';
+import { MoonLoader } from 'react-spinners';
 import VideoPlayer from '../components/Video/VideoPlayer';
 import VideoItem from '../components/Video/VideoItem';
 import NextVideos from '../components/NextVideos/NextVideos';
-import videoData from '../data/video-details.json';
+import axios from '../data/axios';
+import routes from '../data/routes';
 
 function Video() {
-  const { id } = useParams();
+    let { id } = useParams();
+    const [loading, setLoading] = useState(true);
+    const [currentVideo, setCurrentVideo] = useState(null);
 
-  // TODO: make an API request to get the specific video from GET /videos/:id
-  // TODO: make an API request to get the FIRST video from GET /videos for home page
-  const currentVideo = id
-    ? videoData.find((video) => video.id === id)
-    : videoData[0];
+    useEffect(() => {
+        async function fetchVideo() {
+            if (!id) {
+                const videos = await axios.get(routes.videos);
+                id = videos.data[0].id;
+            }
 
-  return (
-    <>
-      <VideoPlayer media={currentVideo} />
-      <div className="video__content-wrapper">
-        <VideoItem media={currentVideo} />
-        <NextVideos playing={currentVideo} />
-      </div>
-    </>
-  );
+            const video = await axios.get(`${routes.videos}/${id}`);
+
+            setCurrentVideo(video.data);
+            setLoading(false);
+        }
+
+        fetchVideo();
+    }, [id]);
+
+    if (loading) {
+        return (
+            <div className="video__content-wrapper">
+                <MoonLoader
+                    className="video__loader"
+                    color="#0095FF"
+                    loading={loading}
+                    size="35"
+                />
+            </div>
+        );
+    }
+
+    return (
+        <>
+            <VideoPlayer media={currentVideo} />
+            <div className="video__content-wrapper">
+                <VideoItem media={currentVideo} />
+                <NextVideos playing={currentVideo} />
+            </div>
+        </>
+    );
 }
 
 export default Video;

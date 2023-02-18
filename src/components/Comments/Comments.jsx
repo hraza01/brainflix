@@ -12,7 +12,7 @@ function Comments({ data }) {
           name={comment.name}
           value={comment.comment}
           likes={comment.likes}
-          timestamp={moment(comment.timestamp).format('MM/DD/YYYY')}
+          timestamp={moment(comment.timestamp).fromNow()}
         />
       ))}
     </div>
