@@ -16,19 +16,126 @@
     }
 
     &__container {
-        transition: all 0.5s;
+        transition: all 0.5s ease-in-out;
+        width: 100%;
+        background: abstracts.color('secondary', 'BrainFlix-DarkBlack');
+
 
         &:hover {
             box-shadow: 0 2.4rem 6.4rem -1rem grey;
         }
     }
 
-    &__player {
-        display: block;
+    &__playerWrapper {
+        position: relative;
+        max-height: 72rem;
+        margin: 0 auto;
         aspect-ratio: 16 / 9;
-        max-height: 70rem;
-        width: 100%;
-        background-color: abstracts.color('secondary', 'BrainFlix-DarkBlack');
+        overflow: hidden;
+
+
+        &:hover .video__controlsWrapper {
+            opacity: .85;
+        }
+
+        &:hover .video__controlsWrapper .video__controlsWrapper .video__controls .sliderContainer {
+            opacity: 1;
+        }
+
+    }
+
+    &__player {
+        width: 100% !important;
+        height: 100% !important;
+        aspect-ratio: 16 / 9 !important;
+    }
+
+
+    &__controlsWrapper {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        z-index: 100;
+        padding: 1.6rem;
+        opacity: 0;
+        transition: opacity 150ms ease-in-out;
+
+
+        @include abstracts.respond-to('tablet') {
+            padding: 1.6rem 2.4rem;
+        }
+    }
+
+    &__controls {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 4px;
+        padding: 0.5rem;
+        cursor: pointer;
+        opacity: .80;
+        transition: opacity 150ms ease-in-out;
+
+        &:hover {
+            opacity: 1;
+        }
+
+        @include abstracts.respond-to('desktop') {
+            height: 4rem;
+        }
+
+        &:first-child {
+            width: 4.2rem;
+            margin-right: 1.2rem;
+
+            @include abstracts.respond-to('tablet') {
+                width: 8rem;
+            }
+        }
+
+        &:nth-child(3) {
+            margin-left: 1.2rem;
+
+            @include abstracts.respond-to('tablet') {
+                width: 10rem;
+            }
+        }
+
+        //volume level
+        &:last-child {
+            position: absolute;
+            width: 3rem;
+            height: 14rem;
+            padding: 1.2rem 0;
+            right: 1.8rem;
+            bottom: 6rem;
+            display: none;
+
+            @include abstracts.respond-to('tablet') {
+                width: 4rem;
+                right: 2.5rem;
+            }
+        }
+
+    }
+
+
+    &__play-pause,
+    &__fullscreen,
+    &__volume {
+        margin: 0 auto;
+        color: white;
+        max-width: 2rem;
+        height: 2rem;
+    }
+
+    &__play-pause {
+        width: 1.5rem;
     }
 
     &__title {
@@ -80,7 +187,6 @@
     }
 
     &__data-icon-wrapper {
-        //justify-self: flex-end;
         display: flex;
         align-items: center;
         gap: 1.2rem;
@@ -99,4 +205,115 @@
         font-weight: map-get(abstracts.$font-weights, 'semi-bold');
         margin-bottom: 1.6rem;
     }
+}
+
+//.react-player__preview {
+//    aspect-ratio: 16 / 9;
+//}
+
+// React Slider -> refactor this
+
+.video__sliderContainer {
+    border-radius: 4px;
+    padding: 1.2rem;
+    background: rgba(0, 0, 0, 0.5);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1.2rem;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 3rem;
+    opacity: .85;
+    transition: opacity 150ms ease-in-out;
+
+        &:hover {
+            opacity: 1;
+        }
+
+    @include abstracts.respond-to('desktop') {
+        height: 4rem;
+        padding: 1.2rem 2.4rem;
+    }
+
+
+    span {
+        font-size: 1.2rem;
+        color: white;
+    }
+}
+
+.video__slider--horizontal {
+    width: 100%;
+    padding: 1.2rem 0;
+}
+
+.video__thumb {
+    cursor: pointer;
+    position: absolute;
+    z-index: 100;
+    width: 1.6rem;
+    height: 1.6rem;
+    background-color: abstracts.color("primary", "White");
+    border-radius: 100%;
+    display: block;
+}
+
+.video__thumb.active {
+    background-color: abstracts.color("primary", "Silver");
+}
+
+.video__track {
+    position: absolute;
+    top: 1.05rem;
+    background: abstracts.color("secondary", "BrainFlix-DarkBlack");
+    border-radius: 4px;
+    height: 4px;
+}
+
+.video__track.video__track-0 {
+    background: abstracts.color("primary", "BrainFlix-Blue");
+}
+
+.video__slider--horizontal .video__thumb {
+    top: 0.5rem;
+    outline: none;
+}
+
+//volume slider
+.video__slider--vertical {
+    position: relative;
+    padding: 1.2rem 0;
+    height: 12rem;
+
+}
+
+.video__track--vertical {
+    position: absolute;
+    bottom: 0;
+    left: 1.3rem;
+    background: abstracts.color("secondary", "BrainFlix-DarkBlack");
+    border-radius: 4px;
+    width: 4px;
+
+    @include abstracts.respond-to('tablet') {
+        left: 1.7rem;
+    }
+}
+
+.video__track--vertical.video__track--vertical-0 {
+    background: abstracts.color("primary", "BrainFlix-Blue");
+}
+
+.video__slider--vertical .video__thumb {
+    left: 0.65rem;
+
+    @include abstracts.respond-to('tablet') {
+        left: 1.1rem;
+    }
+}
+
+.video__slider--vertical {
+    padding: 1.2rem 0;
 }
