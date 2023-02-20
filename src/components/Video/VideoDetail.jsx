@@ -6,7 +6,7 @@ import CommentForm from '../Comments/CommentForm';
 import axios from '@/data/axios';
 import routes from '@/data/routes';
 
-function VideoDetail({ media, onUpdateVideoDetail }) {
+function VideoDetail({ video, onUpdateVideoDetail }) {
     const updateVideoDetail = (videoId) => {
         axios.get(`${routes.videos}/${videoId}`).then((response) => {
             onUpdateVideoDetail(response.data);
@@ -16,16 +16,20 @@ function VideoDetail({ media, onUpdateVideoDetail }) {
     return (
         <div className="video__information">
             <VideoItem
-                title={media.title}
-                channel={media.channel}
-                timestamp={media.timestamp}
-                views={media.views}
-                likes={media.likes}
-                description={media.description}
-                commentCount={media.comments.length}
+                title={video.title}
+                channel={video.channel}
+                timestamp={video.timestamp}
+                views={video.views}
+                likes={video.likes}
+                description={video.description}
+                commentCount={video.comments.length}
             />
-            <CommentForm videoId={media.id} onComment={updateVideoDetail} />
-            <Comments data={media.comments} />
+            <CommentForm videoId={video.id} onComment={updateVideoDetail} />
+            <Comments
+                videoId={video.id}
+                data={video.comments}
+                onDelete={updateVideoDetail}
+            />
         </div>
     );
 }

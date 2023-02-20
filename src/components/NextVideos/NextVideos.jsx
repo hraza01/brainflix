@@ -5,7 +5,7 @@ import './_NextVideos.scss';
 import axios from '@/data/axios';
 import routes from '@/data/routes';
 
-function NextVideos({ playing }) {
+function NextVideos({ currentVideo }) {
     const [loading, setLoading] = useState(true);
     const [nextVideos, setNextVideos] = useState(null);
 
@@ -35,7 +35,7 @@ function NextVideos({ playing }) {
         <aside className="NextVideos">
             <h3 className="NextVideos__heading">next videos</h3>
             {nextVideos
-                .filter((videoItem) => videoItem.id !== playing.id)
+                .filter((videoItem) => videoItem.id !== currentVideo.id)
                 .map((videoItem) => (
                     <NextVideoItem key={videoItem.id} video={videoItem} />
                 ))}

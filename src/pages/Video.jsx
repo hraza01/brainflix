@@ -52,13 +52,13 @@ function Video() {
     } else {
         return (
             <>
-                <VideoPlayer media={currentVideo} />
+                <VideoPlayer video={currentVideo} />
                 <div className="video__content-wrapper">
                     <VideoDetail
-                        media={currentVideo}
+                        video={currentVideo}
                         onUpdateVideoDetail={setCurrentVideo}
                     />
-                    <NextVideos playing={currentVideo} />
+                    <NextVideos currentVideo={currentVideo} />
                 </div>
             </>
         );

@@ -2,14 +2,14 @@ import React from 'react';
 import ReactPlayer from 'react-player';
 import VideoPlayerControls from './VideoPlayerControls';
 
-function VideoPlayer({ media }) {
+function VideoPlayer({ video }) {
     return (
         <div className="video__container">
             <div className="video__playerWrapper">
                 <ReactPlayer
                     className="video__player"
-                    light={<img src={media.image} alt="thumbnail" />}
-                    url={`${media.video}?api_key=${
+                    light={<img src={video.image} alt="thumbnail" />}
+                    url={`${video.video}?api_key=${
                         import.meta.env.VITE_API_KEY
                     }`}
                     muted
@@ -18,7 +18,7 @@ function VideoPlayer({ media }) {
                 <VideoPlayerControls
                     playing={false}
                     currentTime={'0:00'}
-                    duration={media.duration}
+                    duration={video.duration}
                 />
             </div>
         </div>
