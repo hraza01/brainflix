@@ -3,7 +3,7 @@ import './_Video.scss';
 import { useParams } from 'react-router-dom';
 import { MoonLoader } from 'react-spinners';
 import VideoPlayer from '@/components/Video/VideoPlayer';
-import VideoItem from '@/components/Video/VideoItem';
+import VideoDetail from '@/components/Video/VideoDetail.jsx';
 import NextVideos from '@/components/NextVideos/NextVideos';
 import axios from '@/data/axios';
 import routes from '@/data/routes';
@@ -54,7 +54,10 @@ function Video() {
             <>
                 <VideoPlayer media={currentVideo} />
                 <div className="video__content-wrapper">
-                    <VideoItem media={currentVideo} />
+                    <VideoDetail
+                        media={currentVideo}
+                        onUpdateVideoDetail={setCurrentVideo}
+                    />
                     <NextVideos playing={currentVideo} />
                 </div>
             </>

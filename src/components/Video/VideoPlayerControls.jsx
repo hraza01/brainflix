@@ -48,7 +48,7 @@ const VideoPlayerControls = ({ playing, currentTime, duration }) => {
                     thumbClassName="video__thumb"
                     trackClassName="video__track--vertical"
                     orientation="vertical"
-                    invert="true"
+                    invert={true}
                     defaultValue={0}
                     // value={90} // set seek value here using state
                 />
