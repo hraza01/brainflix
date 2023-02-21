@@ -1,20 +1,18 @@
 import React from 'react';
-import ReactPlayer from 'react-player';
 import VideoPlayerControls from './VideoPlayerControls';
 
 function VideoPlayer({ video }) {
     return (
         <div className="video__container">
             <div className="video__playerWrapper">
-                <ReactPlayer
+                <video
                     className="video__player"
-                    light={<img src={video.image} alt="thumbnail" />}
-                    url={`${video.video}?api_key=${
+                    src={`${video.video}?api_key=${
                         import.meta.env.VITE_API_KEY
                     }`}
+                    poster={video.image}
                     muted
-                    playing={false}
-                />
+                ></video>
                 <VideoPlayerControls
                     playing={false}
                     currentTime={'0:00'}

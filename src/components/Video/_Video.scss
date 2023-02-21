@@ -27,11 +27,14 @@
     }
 
     &__playerWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         position: relative;
-        max-height: 72rem;
+        max-height: 70rem;
         margin: 0 auto;
         aspect-ratio: 16 / 9;
-        overflow: hidden;
+        background: abstracts.color('secondary', 'BrainFlix-DarkBlack');
 
 
         &:hover .video__controlsWrapper {
@@ -207,11 +210,7 @@
     }
 }
 
-//.react-player__preview {
-//    aspect-ratio: 16 / 9;
-//}
-
-// React Slider -> refactor this
+// TODO: React Slider --> refactor this
 
 .video__sliderContainer {
     border-radius: 4px;
