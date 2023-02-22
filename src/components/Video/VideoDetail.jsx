@@ -1,18 +1,10 @@
 import React from 'react';
-import './_Video.scss';
-import VideoItem from './VideoItem.jsx';
+import VideoItem from './VideoItem';
 import Comments from '../Comments/Comments';
 import CommentForm from '../Comments/CommentForm';
-import axios from '@/data/axios';
-import routes from '@/data/routes';
+import './_Video.scss';
 
-function VideoDetail({ video, onUpdateVideoDetail }) {
-    const updateVideoDetail = (videoId) => {
-        axios.get(`${routes.videos}/${videoId}`).then((response) => {
-            onUpdateVideoDetail(response.data);
-        });
-    };
-
+function VideoDetail({ video, updateVideoDetail }) {
     return (
         <div className="video__information">
             <VideoItem

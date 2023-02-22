@@ -4,24 +4,11 @@ import {
     HandThumbUpIcon,
     TrashIcon,
 } from '@heroicons/react/24/outline/index.js';
-import axios from '@/data/axios';
-import routes from '@/data/routes';
+import { deleteComment } from '@/utils/services';
 
 function CommentItem({ videoId, id, name, value, likes, timestamp, onDelete }) {
     const commentDeleteHandler = () => {
-        const url = [
-            routes.videos,
-            `/${videoId}`,
-            routes.comments,
-            `/${id}`,
-        ].join('');
-
-        axios
-            .delete(url)
-            .then((response) => {
-                onDelete(videoId);
-            })
-            .catch((error) => console.log(error));
+        deleteComment(videoId, id, onDelete);
     };
 
     return (

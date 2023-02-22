@@ -1,22 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { MoonLoader } from 'react-spinners';
+import { fetchNextVideos } from '@/utils/services';
 import NextVideoItem from './NextVideoItem';
 import './_NextVideos.scss';
-import axios from '@/data/axios';
-import routes from '@/data/routes';
 
 function NextVideos({ currentVideo }) {
     const [loading, setLoading] = useState(true);
     const [nextVideos, setNextVideos] = useState(null);
 
     useEffect(() => {
-        async function fetchVideos() {
-            const videos = await axios.get(routes.videos);
-            setNextVideos(videos.data);
-            setLoading(false);
-        }
-
-        fetchVideos();
+        fetchNextVideos(setLoading, setNextVideos);
     }, []);
 
     if (loading) {

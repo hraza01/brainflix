@@ -1,38 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import './_Video.scss';
 import { useParams } from 'react-router-dom';
 import { MoonLoader } from 'react-spinners';
+import { fetchCurrentVideo } from '@/utils/services';
 import VideoPlayer from '@/components/Video/VideoPlayer';
-import VideoDetail from '@/components/Video/VideoDetail.jsx';
+import VideoDetail from '@/components/Video/VideoDetail';
 import NextVideos from '@/components/NextVideos/NextVideos';
-import axios from '@/data/axios';
-import routes from '@/data/routes';
 import NotFound from '@/pages/NotFound';
+import './_Video.scss';
 
 function Video() {
     let { id } = useParams();
+
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [currentVideo, setCurrentVideo] = useState();
 
     useEffect(() => {
-        async function fetchVideo() {
-            try {
-                if (!id) {
-                    const videos = await axios.get(routes.videos);
-                    id = videos.data[0].id;
-                }
-                const video = await axios.get(`${routes.videos}/${id}`);
-
-                setCurrentVideo(video.data);
-                setLoading(false);
-            } catch (error) {
-                setError(true);
-                setLoading(false);
-            }
-        }
-
-        fetchVideo();
+        fetchCurrentVideo(id, setError, setLoading, setCurrentVideo);
     }, [id]);
 
     if (loading) {
@@ -56,7 +40,7 @@ function Video() {
                 <div className="video__content-wrapper">
                     <VideoDetail
                         video={currentVideo}
-                        onUpdateVideoDetail={setCurrentVideo}
+                        updateVideoDetail={setCurrentVideo}
                     />
                     <NextVideos currentVideo={currentVideo} />
                 </div>
