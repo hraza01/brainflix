@@ -1,12 +1,22 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import videoPreview from '@/assets/images/Upload-video-preview.jpg';
 import publishLogo from '@/assets/icons/publish.svg';
 import './Upload.scss';
 
 function UploadForm() {
+    const navigate = useNavigate();
+
+    const formSubmitHandler = (e) => {
+        e.preventDefault();
+        const message = `Your video ${e.target.title.value} has been uploaded to BrainFlix.`;
+        alert(message);
+        navigate('/');
+    };
+
     return (
         <div className="upload__form-container">
-            <form action="/" className="upload__form">
+            <form onSubmit={formSubmitHandler} className="upload__form">
                 <div className="upload__form-content">
                     <div className="upload__img">
                         <label htmlFor="upload">video thumbnail</label>
@@ -53,7 +63,7 @@ function UploadForm() {
                         <span className="upload__btn-text">publish</span>
                     </button>
                     <button
-                        type="submit"
+                        type="reset"
                         className="upload__btn upload__btn--cancel"
                     >
                         cancel
