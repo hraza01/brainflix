@@ -6,15 +6,21 @@ import fullscreenIcon from '@/assets/icons/fullscreen.svg';
 import closeFullscreenIcon from '@/assets/icons/close_fullscreen.svg';
 import volumeUpIcon from '@/assets/icons/volume_up.svg';
 import volumeOffIcon from '@/assets/icons/volume_off.svg';
-import scrubIcon from '@/assets/icons/scrub.svg';
 import './_Video.scss';
 
-const VideoPlayerControls = ({ playing, currentTime, duration }) => {
+const VideoPlayerControls = ({
+    onPlayPause,
+    playing,
+    currentTime,
+    duration,
+    sliderValue,
+}) => {
     return (
         <div className="video__controlsWrapper">
             <div className="video__controls">
                 <img
-                    className="video__play-pause"
+                    onClick={onPlayPause}
+                    className={`${!playing ? 'video__play' : 'video__pause'}`}
                     src={!playing ? playIcon : pauseIcon}
                     alt="play icon"
                 />
@@ -24,7 +30,7 @@ const VideoPlayerControls = ({ playing, currentTime, duration }) => {
                     className="video__slider video__slider--horizontal"
                     thumbClassName="video__thumb"
                     trackClassName="video__track"
-                    value={0}
+                    value={sliderValue}
                 />
                 <span>
                     {currentTime} / {duration}
@@ -50,7 +56,7 @@ const VideoPlayerControls = ({ playing, currentTime, duration }) => {
                     orientation="vertical"
                     invert={true}
                     defaultValue={0}
-                    // value={90} // set seek value here using state
+                    value={0}
                 />
             </div>
         </div>
