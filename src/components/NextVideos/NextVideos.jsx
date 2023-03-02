@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { MoonLoader } from 'react-spinners';
+import { ClipLoader } from 'react-spinners';
 import { fetchNextVideos } from '@/utils/services';
 import NextVideoItem from './NextVideoItem';
 import './_NextVideos.scss';
@@ -15,7 +15,7 @@ function NextVideos({ currentVideo }) {
     if (loading) {
         return (
             <aside className="NextVideos">
-                <MoonLoader
+                <ClipLoader
                     className="NextVideos__loader"
                     color="#0095FF"
                     loading={loading}
