@@ -25,4 +25,24 @@ async function fetchVideo(videoId) {
     }
 }
 
-export { fetchVideos, fetchVideo };
+function formatPlayerTime(currentTime, duration) {
+    const minutes = Math.floor(currentTime / 60)
+            .toString()
+            .padStart(2, '0'),
+        seconds = Math.floor(currentTime - minutes * 60)
+            .toString()
+            .padStart(2, '0'),
+        durationMinutes = Math.floor(duration / 60)
+            .toString()
+            .padStart(2, '0'),
+        durationSeconds = Math.floor(duration - durationMinutes * 60)
+            .toString()
+            .padStart(2, '0');
+
+    const time = `${minutes}:${seconds}`,
+        dur = `${durationMinutes}:${durationSeconds}`;
+
+    return { time, dur };
+}
+
+export { fetchVideos, fetchVideo, formatPlayerTime };

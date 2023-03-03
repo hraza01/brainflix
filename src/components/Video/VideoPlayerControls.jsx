@@ -10,6 +10,7 @@ import './_Video.scss';
 
 const VideoPlayerControls = ({
     onPlayPause,
+    onFullScreen,
     playing,
     currentTime,
     duration,
@@ -38,6 +39,7 @@ const VideoPlayerControls = ({
             </div>
             <div className="video__controls">
                 <img
+                    onClick={onFullScreen}
                     className="video__fullscreen"
                     src={fullscreenIcon}
                     alt="play icon"

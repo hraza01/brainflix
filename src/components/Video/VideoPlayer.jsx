@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ClipLoader } from 'react-spinners';
 import VideoPlayerControls from './VideoPlayerControls';
+import { formatPlayerTime } from '@/utils/helpers';
 import './_Video.scss';
 
 function VideoPlayer({ video }) {
@@ -19,6 +20,17 @@ function VideoPlayer({ video }) {
             videoRef.current.pause();
         } else {
             videoRef.current.play();
+        }
+    };
+
+    const fullScreenHandler = () => {
+        if (!videoRef.current) return;
+        const element = videoRef.current;
+
+        if (document.fullscreenElement == null) {
+            element.requestFullscreen();
+        } else {
+            document.exitFullscreen();
         }
     };
 
@@ -45,26 +57,11 @@ function VideoPlayer({ video }) {
             if (!videoRef.current) return;
 
             const { currentTime, duration } = element;
+            const { time, dur } = formatPlayerTime(currentTime, duration);
 
-            const minutes = Math.floor(currentTime / 60)
-                .toString()
-                .padStart(2, '0');
-
-            const seconds = Math.floor(currentTime - minutes * 60)
-                .toString()
-                .padStart(2, '0');
-
-            const durationMinutes = Math.floor(duration / 60)
-                .toString()
-                .padStart(2, '0');
-
-            const durationSeconds = Math.floor(duration - durationMinutes * 60)
-                .toString()
-                .padStart(2, '0');
-
-            setCurrentTime(`${minutes}:${seconds}`);
+            setCurrentTime(time);
+            setVideoDuration(dur);
             setCurrentSeek((currentTime / duration) * 100);
-            setVideoDuration(`${durationMinutes}:${durationSeconds}`);
         };
 
         element.addEventListener('play', onPlay);
@@ -106,6 +103,7 @@ function VideoPlayer({ video }) {
                 ></video>
                 <VideoPlayerControls
                     onPlayPause={playPauseHandler}
+                    onFullScreen={fullScreenHandler}
                     playing={isPlaying}
                     currentTime={currentTime}
                     sliderValue={currentSeek}
