@@ -42,8 +42,12 @@
 
         &:focus,
         &:active,
-        &:valid {
+        &:focus:valid {
             outline: 2px solid abstracts.color('primary', 'BrainFlix-Blue');
+        }
+
+        &:focus:invalid {
+            outline: 1px solid abstracts.color('conditional', 'error');
         }
     }
 }
