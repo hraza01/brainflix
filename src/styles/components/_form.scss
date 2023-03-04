@@ -24,15 +24,15 @@
     & input,
     & textarea {
         color: abstracts.color('primary', 'BrainFlix-Black');
-        outline: none;
-        border: 1px solid abstracts.color('secondary', 'Mercury');
+        border: none;
+        outline: 1px solid abstracts.color('secondary', 'Mercury');
         background-color: abstracts.color('secondary', 'Alabaster');
         border-radius: 4px;
         padding: 1.2rem;
         width: 100%;
         margin-bottom: 2.4rem;
         resize: none;
-        transition: all 0.33s ease-in-out;
+        transition: all 150ms ease-in-out;
 
         @include abstracts.respond-to('tablet') {
             height: 4rem;
@@ -43,7 +43,7 @@
         &:focus,
         &:active,
         &:valid {
-            border: 2px solid abstracts.color('primary', 'BrainFlix-Blue');
+            outline: 2px solid abstracts.color('primary', 'BrainFlix-Blue');
         }
     }
 }
