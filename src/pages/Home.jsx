@@ -12,7 +12,7 @@ function Home() {
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
-    const [currentVideo, setCurrentVideo] = useState();
+    const [currentVideo, setCurrentVideo] = useState(null);
 
     useEffect(() => {
         fetchCurrentVideo(id, setError, setLoading, setCurrentVideo);
