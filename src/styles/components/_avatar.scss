@@ -8,6 +8,7 @@
     object-position: left;
     border-radius: 50%;
     background-color: abstracts.color('secondary', 'Mercury');
+    cursor: pointer;
 
     @include abstracts.respond-to('tablet') {
         width: 4rem;
