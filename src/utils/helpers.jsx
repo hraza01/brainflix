@@ -44,5 +44,10 @@ function formatPlayerTime(currentTime, duration) {
 
     return { time, dur };
 }
+function commentValidator(comment) {
+    const pattern = new RegExp(/^(?![\s.]*$).{3,}$/);
 
-export { fetchVideos, fetchVideo, formatPlayerTime };
+    return pattern.test(comment);
+}
+
+export { fetchVideos, fetchVideo, formatPlayerTime, commentValidator };

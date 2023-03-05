@@ -24,8 +24,31 @@
         }
     }
 
+    &__error {
+        margin: 0 auto;
+        padding: 0.8rem 1.6rem;
+        border: 1px solid abstracts.color("conditional", "error-bg");
+        border-radius: 4px;
+        color: abstracts.color("conditional", "error");
+
+        @include abstracts.respond-to("tablet") {
+            padding: 0.8rem 2.4rem;
+        }
+
+        @include abstracts.respond-to("desktop") {
+        }
+
+        &--hidden {
+            display: none;
+        }
+    }
+
     &__form {
         @extend .form;
+
+        &--error {
+            outline: 1px solid abstracts.color('conditional', 'error') !important;
+        }
     }
 
     &__container {
@@ -39,7 +62,6 @@
         }
 
         @include abstracts.respond-to('desktop') {
-            //max-width: 50rem;
             padding: 3.2rem 0;
         }
     }

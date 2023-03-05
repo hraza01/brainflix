@@ -16,7 +16,10 @@ function Comments({ videoId, data, onDelete }) {
                         name={comment.name}
                         value={comment.comment}
                         likes={comment.likes}
-                        timestamp={moment(comment.timestamp).fromNow()}
+                        timestamp={moment(comment.timestamp)
+                            // to adjust the time between client and server
+                            .subtract('500', 'ms')
+                            .fromNow()}
                         onDelete={onDelete}
                     />
                 ))}
