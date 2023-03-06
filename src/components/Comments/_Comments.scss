@@ -6,121 +6,164 @@
 @use '../../styles/components';
 
 .comment {
-  &__form-container {
-    @include abstracts.flex-center();
-    align-items: flex-start;
-    gap: 1.6rem;
-    margin: 1.6rem auto;
+    &__form-container {
+        @include abstracts.flex-center();
+        align-items: flex-start;
+        gap: 1.6rem;
+        margin: 1.6rem auto;
 
-    @include abstracts.respond-to('tablet') {
-      margin: 1.6rem 0;
-      padding: 0;
-      display: flex;
-      justify-content: flex-start;
-      position: relative;
+        @include abstracts.respond-to('tablet') {
+            margin: 1.6rem 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-start;
+            position: relative;
+        }
+
+        @include abstracts.respond-to('desktop') {
+        }
     }
 
-    @include abstracts.respond-to('desktop') {
-    }
-  }
+    &__error {
+        margin: 0 auto;
+        padding: 0.8rem 1.6rem;
+        border: 1px solid abstracts.color("conditional", "error-bg");
+        border-radius: 4px;
+        color: abstracts.color("conditional", "error");
 
-  &__form {
-    @extend .form;
-  }
+        @include abstracts.respond-to("tablet") {
+            padding: 0.8rem 2.4rem;
+        }
 
-  &__container {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1.6rem;
+        @include abstracts.respond-to("desktop") {
+        }
 
-    @include abstracts.respond-to('tablet') {
-      margin: 0 auto;
-      padding: 1.6rem 0;
-    }
-
-    @include abstracts.respond-to('desktop') {
-      //max-width: 50rem;
-      padding: 3.2rem 0;
-    }
-  }
-
-  &__avatar {
-    @extend .avatar;
-
-    &--form {
-      margin-top: 2.4rem;
-    }
-  }
-
-  &__item {
-    @include abstracts.flex-center();
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 1.6rem;
-    padding: 1.6rem 0;
-    border-top: 2px solid abstracts.color('secondary', 'Mercury');
-
-    &:last-child {
-      border-bottom: 2px solid abstracts.color('secondary', 'Mercury');
+        &--hidden {
+            display: none;
+        }
     }
 
-    @include abstracts.respond-to('desktop') {
-      padding-right: 1.6rem;
-      margin-right: -2.4rem;
-    }
-  }
+    &__form {
+        @extend .form;
 
-  &__description {
-    @include abstracts.grid(repeat(2, 1fr), 1fr);
-    width: 100%;
-    justify-items: start;
-    align-items: start;
-  }
-
-  &__time {
-    color: abstracts.color('primary', 'Silver');
-    justify-self: end;
-  }
-
-  &__text {
-    grid-column: 1 / -1;
-    padding-top: 0.8rem;
-    word-break: break-word;
-  }
-
-  &__interactivity {
-    display: flex;
-    justify-self: flex-end;
-    gap: 1.2rem;
-    padding: 0.4rem;
-  }
-
-  &__likes {
-    margin-top: 0.8rem;
-  }
-
-  &__btn-container {
-    position: relative;
-    width: 100%;
-
-    @include abstracts.respond-to('tablet') {
-      width: fit-content;
-      position: absolute;
-      right: 0;
-      bottom: 50%;
-      transform: translate(0, 50%);
-    }
-  }
-
-  &__btn {
-    @extend .btn;
-
-    &-logo {
-      @extend .btn-logo;
+        &--error {
+            outline: 1px solid abstracts.color('conditional', 'error') !important;
+        }
     }
 
-    &-text {
-      @extend .btn-text;
+    &__container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.6rem;
+
+        @include abstracts.respond-to('tablet') {
+            margin: 0 auto;
+            padding: 1.6rem 0;
+        }
+
+        @include abstracts.respond-to('desktop') {
+            padding: 3.2rem 0;
+        }
     }
-  }
+
+    &__avatar {
+        @extend .avatar;
+
+        &--form {
+            margin-top: 2.4rem;
+        }
+    }
+
+    &__item {
+        @include abstracts.flex-center();
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 1.6rem;
+        padding: 1.6rem 0;
+        border-top: 2px solid abstracts.color('secondary', 'Mercury');
+
+        &:last-child {
+            border-bottom: 2px solid abstracts.color('secondary', 'Mercury');
+        }
+
+        @include abstracts.respond-to('desktop') {
+            padding-right: 1.6rem;
+            margin-right: -2.4rem;
+        }
+    }
+
+    &__description {
+        @include abstracts.grid(repeat(2, 1fr), 1fr);
+        width: 100%;
+        justify-items: start;
+        align-items: start;
+    }
+
+    &__time {
+        color: abstracts.color('primary', 'Silver');
+        justify-self: end;
+    }
+
+    &__text {
+        grid-column: 1 / -1;
+        padding-top: 0.8rem;
+        word-break: break-word;
+    }
+
+    &__interactivity {
+        display: flex;
+        justify-self: flex-end;
+        gap: 1.2rem;
+        padding: 0.4rem;
+    }
+
+    &__likes {
+        margin-top: 0.8rem;
+    }
+
+
+    &__like,
+    &__delete {
+        color: abstracts.color("primary", "BrainFlix-Black");
+        cursor: pointer;
+        border: none;
+        background: none;
+        width: 2.4rem;
+        height: 2.4rem;
+        transition: all 0.3s;
+    }
+
+    &__like:hover {
+        color: abstracts.color("primary", "BrainFlix-Blue");
+    }
+
+    &__delete:hover {
+        color: abstracts.color("conditional", "error");
+    }
+
+    &__btn-container {
+        text-decoration: none;
+        position: relative;
+        width: 100%;
+
+        @include abstracts.respond-to('tablet') {
+            width: fit-content;
+            position: absolute;
+            right: 0;
+            bottom: 50%;
+            transform: translate(0, 50%);
+        }
+    }
+
+    &__btn {
+        @extend .btn;
+
+        &-logo {
+            @extend .btn-logo;
+        }
+
+        &-text {
+            @extend .btn-text;
+        }
+    }
 }

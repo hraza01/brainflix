@@ -9,7 +9,7 @@
 /// @param {String} $path - asset path
 /// @return {Url}
 @function asset($base, $type, $path) {
-  @return url($base + $type + $path);
+    @return url($base + $type + $path);
 }
 
 /// Returns URL to an image based on its path
@@ -18,21 +18,21 @@
 /// @return {Url}
 /// @require $base-url
 @function image($path, $base: variables.$base-url) {
-  @return asset($base, 'images/', $path);
+    @return asset($base, 'images/', $path);
 }
 
 @function font($path, $base: variables.$base-url) {
-  @return asset($base, 'fonts/', $path);
+    @return asset($base, 'fonts/', $path);
 }
 
 @function icon($path, $base: variables.$base-url) {
-  @return asset($base, 'icons/', $path);
+    @return asset($base, 'icons/', $path);
 }
 
 @function logo($path, $base: variables.$base-url) {
-  @return asset($base, 'logos/', $path);
+    @return asset($base, 'logos/', $path);
 }
 
 @function color($type, $variant) {
-  @return map-get(variables.$colors, $type, $variant);
+    @return map-get(variables.$colors, $type, $variant);
 }

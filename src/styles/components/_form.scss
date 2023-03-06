@@ -2,48 +2,47 @@
 @use '../base';
 
 .form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-
-  & *::placeholder {
-    color: abstracts.color('primary', 'BrainFlix-Black');
-  }
-
-  & label {
-    color: abstracts.color('primary', 'Silver');
-    font-weight: 600;
-    font-size: 1.3rem;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-bottom: 0.4rem;
-  }
-
-  & input,
-  & textarea {
-    color: abstracts.color('primary', 'BrainFlix-Black');
-    outline: none;
-    border: 1px solid abstracts.color('secondary', 'Mercury');
-    background-color: abstracts.color('secondary', 'Alabaster');
-    border-radius: 4px;
-    padding: 1.2rem;
     width: 100%;
-    margin-bottom: 2.4rem;
-    resize: none;
-    transition: all 0.33s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 
-    @include abstracts.respond-to('tablet') {
-      height: 4rem;
-      padding: 0.8rem 1.6rem;
-      width: calc(100% - 20rem);
+    & *::placeholder {
+        color: abstracts.color('primary', 'BrainFlix-Black');
     }
 
-    &:focus,
-    &:active,
-    &:valid {
-      border: 2px solid abstracts.color('primary', 'BrainFlix-Blue');
+    & label {
+        color: abstracts.color('primary', 'Silver');
+        font-weight: 600;
+        font-size: 1.3rem;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        margin-bottom: 0.4rem;
     }
-  }
+
+    & input,
+    & textarea {
+        color: abstracts.color('primary', 'BrainFlix-Black');
+        border: none;
+        outline: 1px solid abstracts.color('secondary', 'Mercury');
+        background-color: abstracts.color('secondary', 'Alabaster');
+        border-radius: 4px;
+        padding: 1.2rem;
+        width: 100%;
+        margin-bottom: 2.4rem;
+        resize: none;
+        transition: all 150ms ease-in-out;
+
+        @include abstracts.respond-to('tablet') {
+            height: 4rem;
+            padding: 0.8rem 1.6rem;
+            width: calc(100% - 20rem);
+        }
+
+        &:focus,
+        &:active, {
+            outline: 2px solid abstracts.color('primary', 'BrainFlix-Blue');
+        }
+    }
 }
