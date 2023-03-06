@@ -1,6 +1,5 @@
-@use "../../styles/abstracts";
-@use "../../styles/base";
-
+@use '../../styles/abstracts';
+@use '../../styles/base';
 
 .NextVideos {
     @include abstracts.section-wrapper();
@@ -9,35 +8,44 @@
     gap: 1.6rem;
     margin-bottom: 2.4rem;
 
-    @include abstracts.respond-to("desktop") {
+    @include abstracts.respond-to('desktop') {
         width: 40rem;
         padding: 4.8rem 2.4rem 1.2rem;
-        border-left: 2px solid abstracts.color("secondary", "Mercury");
+        border-left: 2px solid abstracts.color('secondary', 'Mercury');
+    }
+
+    &__loader {
+        margin: 4.8rem;
+        align-self: center;
     }
 
     &__heading {
-        color: abstracts.color("primary", "Silver");
+        color: abstracts.color('primary', 'Silver');
         letter-spacing: 0.5px;
         text-transform: uppercase;
         margin-bottom: 0.4rem;
     }
 
     &__item {
+        all: unset;
         display: flex;
         gap: 2.4rem;
         cursor: pointer;
         transition: all 0.3s;
-        padding: 0.4rem 0;
+        padding: 0.4rem;
+        border-radius: 4px;
+
 
         &:hover {
-            background-color: abstracts.color("secondary", "Alabaster");
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            transform: translateY(-2.5%);
+            background-color: abstracts.color('secondary', 'Alabaster');
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+            0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transform: translateY(-5%);
         }
     }
 
     &__img {
-        background-color: abstracts.color("secondary", "Mercury");
+        background-color: abstracts.color('secondary', 'Mercury');
         object-fit: cover;
         object-position: center;
         width: 14rem;
@@ -50,7 +58,8 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
+        padding: 0.4rem 0;
+        justify-content: space-between;
         gap: 0.8rem;
     }
 

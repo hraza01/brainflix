@@ -1,25 +1,25 @@
 // -----------------------------------------------------------------------------
 // This file contains all @font-face declarations, if any.
 // -----------------------------------------------------------------------------
-@use "../abstracts";
+@use '../abstracts';
 
 @font-face {
-    font-family: "Avenir Next";
-    src: abstracts.font("AvenirNextLTPro-Regular.otf") format("opentype");
-    font-weight: map-get(abstracts.$font-weights, "regular");
+    font-family: 'Avenir Next';
+    src: abstracts.font('AvenirNextLTPro-Regular.otf') format('opentype');
+    font-weight: map-get(abstracts.$font-weights, 'regular');
     font-style: normal;
 }
 
 @font-face {
-    font-family: "Avenir Next";
-    src: abstracts.font("AvenirNextLTPro-SemiBold.otf") format("opentype");
-    font-weight: map-get(abstracts.$font-weights, "semi-bold");
+    font-family: 'Avenir Next';
+    src: abstracts.font('AvenirNextLTPro-SemiBold.otf') format('opentype');
+    font-weight: map-get(abstracts.$font-weights, 'semi-bold');
     font-style: normal;
 }
 
 @font-face {
-    font-family: "Avenir Next";
-    src: abstracts.font("AvenirNextLTPro-Bold.otf") format("opentype");
-    font-weight: map-get(abstracts.$font-weights, "bold");
+    font-family: 'Avenir Next';
+    src: abstracts.font('AvenirNextLTPro-Bold.otf') format('opentype');
+    font-weight: map-get(abstracts.$font-weights, 'bold');
     font-style: normal;
 }

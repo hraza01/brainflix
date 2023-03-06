@@ -1,29 +1,29 @@
 import React from 'react';
-import "./_Video.scss"
-import viewsIcon from "../../assets/icons/views.svg"
-import likesIcon from "../../assets/icons/likes.svg"
-import moment from "moment";
+import VideoItem from './VideoItem';
+import Comments from '../Comments/Comments';
+import CommentForm from '../Comments/CommentForm';
+import './_Video.scss';
 
-const VideoDetail = ({title, channel, timestamp, views, likes, description, commentCount}) => {
-  return (
-    <div>
-      <h1 className="video__title">{title}</h1>
-      <div className="video__details">
-        <p className="video__channel">By {channel}</p>
-        <div className="video__data-icon-wrapper">
-          <img className="video__data-icon" src={viewsIcon} alt="views"/>
-          <p className="video__views">{views}</p>
+function VideoDetail({ video, updateVideoDetail }) {
+    return (
+        <div className="video__information">
+            <VideoItem
+                title={video.title}
+                channel={video.channel}
+                timestamp={video.timestamp}
+                views={video.views}
+                likes={video.likes}
+                description={video.description}
+                commentCount={video.comments.length}
+            />
+            <CommentForm videoId={video.id} onComment={updateVideoDetail} />
+            <Comments
+                videoId={video.id}
+                data={video.comments}
+                onDelete={updateVideoDetail}
+            />
         </div>
-        <p className="video__timestamp">{moment(timestamp).format("MM/DD/YYYY")}</p>
-        <div className="video__data-icon-wrapper">
-          <img className="video__data-icon" src={likesIcon} alt="likes"/>
-          <p className="video__likes">{likes}</p>
-        </div>
-      </div>
-      <p className="video__description">{description}</p>
-      <p className="video__comment-count">{commentCount} Comments</p>
-    </div>
-  );
-};
+    );
+}
 
 export default VideoDetail;

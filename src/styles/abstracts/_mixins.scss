@@ -1,8 +1,8 @@
 // -----------------------------------------------------------------------------
 // This file contains all application-wide Sass mixins.
 // -----------------------------------------------------------------------------
-@use "./variables";
-@use "./functions";
+@use './variables';
+@use './functions';
 
 /// Responsive breakpoint manager
 /// @access public
@@ -13,9 +13,9 @@
 
     @if $raw-query {
         $query: if(
-            type-of($raw-query) == "string",
-            unquote($raw-query),
-            inspect($raw-query)
+                type-of($raw-query) == 'string',
+                unquote($raw-query),
+                inspect($raw-query)
         );
 
         @media #{$query} {
@@ -47,15 +47,15 @@
 /// Default section wrapper for all pages except hero section
 @mixin section-wrapper() {
     margin: 0 auto;
-    max-width: map-get(variables.$container-width, "mobile");
+    max-width: map-get(variables.$container-width, 'mobile');
 
-    @include respond-to("tablet") {
-        max-width: map-get(variables.$container-width, "tablet");
+    @include respond-to('tablet') {
+        max-width: map-get(variables.$container-width, 'tablet');
         padding: 1.2rem 0;
     }
 
-    @include respond-to("desktop") {
-        max-width: map-get(variables.$container-width, "desktop");
+    @include respond-to('desktop') {
+        max-width: map-get(variables.$container-width, 'desktop');
         padding: 1.2rem 0;
     }
 }
@@ -64,7 +64,7 @@
 @mixin section-heading() {
     padding: 2.4rem 0 1.6rem;
 
-    @include respond-to("tablet") {
+    @include respond-to('tablet') {
         line-height: 3.2rem;
         padding: 4.8rem 0 3.6rem;
     }

@@ -1,16 +1,21 @@
+import { Link } from 'react-router-dom';
 import React from 'react';
-import UploadIcon from "../../assets/icons/upload.svg";
-import "./_NavBar.scss"
+import UploadIcon from '@/assets/icons/upload.svg';
+import './_NavBar.scss';
 
-const UploadButton = () => {
-  return (
-    <div className="nav__btn-container">
-      <button className="btn nav__btn">
-        <img className="nav__btn-logo" src={UploadIcon} alt="search-logo"/>
-        <span className="nav__btn-text">upload</span>
-      </button>
-    </div>
-  );
-};
+function UploadButton() {
+    return (
+        <Link className="nav__btn-container" to="/upload-video">
+            <button type="button" className="btn nav__btn">
+                <img
+                    className="nav__btn-logo"
+                    src={UploadIcon}
+                    alt="search-logo"
+                />
+                <span className="nav__btn-text">upload</span>
+            </button>
+        </Link>
+    );
+}
 
 export default UploadButton;
