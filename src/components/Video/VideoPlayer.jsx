@@ -27,7 +27,7 @@ function VideoPlayer({ video }) {
         if (!videoRef.current) return;
         const element = videoRef.current;
 
-        if (document.fullscreenElement == null) {
+        if (document.fullscreenElement === null) {
             element.requestFullscreen();
         } else {
             document.exitFullscreen();
