@@ -4,7 +4,7 @@ import {
     HandThumbUpIcon,
     TrashIcon,
 } from '@heroicons/react/24/outline/index.js';
-import { deleteComment } from '@/utils/services';
+import { deleteComment } from '@/utils/services.js';
 
 function CommentItem({ videoId, id, name, value, likes, timestamp, onDelete }) {
     const commentDeleteHandler = () => {

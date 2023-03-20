@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ClipLoader } from 'react-spinners';
-import { fetchNextVideos } from '@/utils/services';
+import { fetchNextVideos } from '@/utils/services.js';
 import NextVideoItem from './NextVideoItem';
 import './_NextVideos.scss';
 

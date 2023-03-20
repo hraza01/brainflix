@@ -1,6 +1,6 @@
-import axios from '@/data/axios';
-import routes from '@/data/routes';
-import { fetchVideos, fetchVideo } from '@/utils/helpers';
+import axios from '@/data/axios.js';
+import routes from '@/data/routes.js';
+import { fetchVideos, fetchVideo } from '@/utils/helpers.js';
 
 // sends a GET request to fetch results for one video, if no videoId is given
 // it proceeds to send a request to get all videos using the helper function

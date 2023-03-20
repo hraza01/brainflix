@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
-import { fetchCurrentVideo } from '@/utils/services';
+import { fetchCurrentVideo } from '@/utils/services.js';
 import VideoPlayer from '@/components/Video/VideoPlayer';
 import VideoDetail from '@/components/Video/VideoDetail';
 import NextVideos from '@/components/NextVideos/NextVideos';

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ClipLoader } from 'react-spinners';
 import VideoPlayerControls from './VideoPlayerControls';
-import { formatPlayerTime } from '@/utils/helpers';
+import { formatPlayerTime } from '@/utils/helpers.js';
 import './_Video.scss';
 
 function VideoPlayer({ video }) {

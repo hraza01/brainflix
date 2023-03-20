@@ -1,5 +1,5 @@
-import axios from '@/data/axios';
-import routes from '@/data/routes';
+import axios from '@/data/axios.js';
+import routes from '@/data/routes.js';
 
 // sends a GET request to the API to get all videos and returns the data object.
 async function fetchVideos() {
