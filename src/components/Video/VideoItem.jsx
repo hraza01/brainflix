@@ -3,6 +3,7 @@ import './_Video.scss';
 import moment from 'moment';
 import viewsIcon from '@/assets/icons/views.svg';
 import likesIcon from '@/assets/icons/likes.svg';
+import { format } from '@/utils/helpers';
 
 function VideoItem({
     title,
@@ -24,7 +25,7 @@ function VideoItem({
                         src={viewsIcon}
                         alt="views"
                     />
-                    <p className="video__views">{views}</p>
+                    <p className="video__views">{format(views)}</p>
                 </div>
                 <p className="video__timestamp">
                     {moment(timestamp).format('MM/DD/YYYY')}
@@ -35,7 +36,7 @@ function VideoItem({
                         src={likesIcon}
                         alt="likes"
                     />
-                    <p className="video__likes">{likes}</p>
+                    <p className="video__likes">{format(likes)}</p>
                 </div>
             </div>
             <article className="video__description">{description}</article>

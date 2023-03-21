@@ -50,4 +50,6 @@ function commentValidator(comment) {
     return pattern.test(comment);
 }
 
-export { fetchVideos, fetchVideo, formatPlayerTime, commentValidator };
+const { format } = new Intl.NumberFormat('en-US');
+
+export { fetchVideos, fetchVideo, formatPlayerTime, commentValidator, format };
