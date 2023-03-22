@@ -4,7 +4,7 @@ import { uploadVideo } from '@/utils/services'
 import videoPreview from '@/assets/images/Upload-video-preview.jpg'
 import publishLogo from '@/assets/icons/publish.svg'
 import './Upload.scss'
-import { textValidator } from '@/utils/helpers.js'
+import { textValidator, imageValidator } from '@/utils/helpers.js'
 
 function UploadForm() {
   const navigate = useNavigate()
@@ -26,7 +26,7 @@ function UploadForm() {
 
     if (url) {
       // change this to URL validator
-      setUrlError(!textValidator(url))
+      setUrlError(!imageValidator(url))
     }
   }, [title, description, url])
 
@@ -69,27 +69,6 @@ function UploadForm() {
               <div className="upload__field">
                 <div
                   className={
-                    urlError ? 'upload__error' : 'upload__error--hidden'
-                  }
-                >
-                  Invalid URL: Image must be hosted on imgur and URL must end
-                  with a .jpg file extension
-                </div>
-                <label htmlFor="title">Add a link to your video</label>
-                <input
-                  value={url}
-                  onChange={(event) => {
-                    setUrl(event.target.value)
-                  }}
-                  className={urlError ? 'upload__form--error' : ''}
-                  id="title"
-                  placeholder="e.g. https://i.imgur.com/ZYcodqt.jpg"
-                  required
-                />
-              </div>
-              <div className="upload__field">
-                <div
-                  className={
                     titleError ? 'upload__error' : 'upload__error--hidden'
                   }
                 >
@@ -107,7 +86,6 @@ function UploadForm() {
                   required
                 />
               </div>
-
               <div className="upload__field">
                 <div
                   className={
@@ -128,6 +106,29 @@ function UploadForm() {
                   placeholder="Add description to your video"
                   required
                   rows="5"
+                />
+              </div>
+              <div className="upload__field">
+                <div
+                  className={
+                    urlError ? 'upload__error' : 'upload__error--hidden'
+                  }
+                >
+                  Invalid URL: Image must be hosted on imgur and URL must end
+                  with a .jpg file extension
+                </div>
+                <label htmlFor="title">
+                  Add a custom thumbnail for your video (optional)
+                </label>
+                <input
+                  value={url}
+                  onChange={(event) => {
+                    setUrl(event.target.value)
+                  }}
+                  className={urlError ? 'upload__form--error' : ''}
+                  id="title"
+                  placeholder="e.g. https://i.imgur.com/ZYcodqt.jpg"
+                  required
                 />
               </div>
             </div>
