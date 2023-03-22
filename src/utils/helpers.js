@@ -51,6 +51,21 @@ function textValidator(comment) {
   return pattern.test(comment)
 }
 
+function imageValidator(image) {
+  const pattern = new RegExp(
+    /^$|^https?:\/\/(?:i\.)?imgur\.com\/\w+\.(?:jpg|jpeg)$/
+  )
+
+  return pattern.test(image)
+}
+
 const { format } = new Intl.NumberFormat('en-US')
 
-export { fetchVideos, fetchVideo, formatPlayerTime, textValidator, format }
+export {
+  fetchVideos,
+  fetchVideo,
+  formatPlayerTime,
+  textValidator,
+  imageValidator,
+  format,
+}
