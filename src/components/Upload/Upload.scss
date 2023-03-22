@@ -43,6 +43,17 @@
             }
         }
 
+        &--error {
+            @extend .form--error;
+        }
+    }
+
+    &__error {
+        @extend .error-box;
+
+        &--hidden {
+            display: none;
+        }
     }
 
     &__form-content {

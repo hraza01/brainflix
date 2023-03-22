@@ -46,3 +46,20 @@
         }
     }
 }
+
+.error-box {
+    margin: 0 auto;
+    padding: 0.4rem 1.2rem;
+    border: 1px solid abstracts.color("conditional", "error-bg");
+    background-color: abstracts.color("conditional", "error-bg");
+    border-radius: 4px;
+    color: abstracts.color("primary", "White");
+
+    @include abstracts.respond-to("tablet") {
+        padding: 0.2rem 1.2rem;
+    }
+}
+
+.form--error {
+    outline: 1px solid abstracts.color('conditional', 'error') !important;
+}

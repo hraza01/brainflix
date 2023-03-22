@@ -10,8 +10,10 @@ function UploadForm() {
     const navigate = useNavigate();
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
+    const [url, setUrl] = useState('');
     const [titleError, setTitleError] = useState(false);
     const [descriptionError, setDescriptionError] = useState(false);
+    const [urlError, setUrlError] = useState(false);
 
     useEffect(() => {
         if (title) {
@@ -21,7 +23,12 @@ function UploadForm() {
         if (description) {
             setDescriptionError(!textValidator(description));
         }
-    }, [title, description]);
+
+        if (url) {
+            // change this to URL validator
+            setUrlError(!textValidator(url));
+        }
+    }, [title, description, url]);
 
     const formSubmitHandler = (e) => {
         const video = {
@@ -62,27 +69,27 @@ function UploadForm() {
                             <div className="upload__field">
                                 <div
                                     className={
-                                        titleError
-                                            ? 'comment__error'
-                                            : 'comment__error--hidden'
+                                        urlError
+                                            ? 'upload__error'
+                                            : 'upload__error--hidden'
                                     }
                                 >
-                                    Invalid Title: Must be greater than 3
-                                    characters
+                                    Invalid URL: Image must be hosted on imgur
+                                    and URL must end with a .jpg file extension
                                 </div>
                                 <label htmlFor="title">
                                     Add a link to your video
                                 </label>
                                 <input
-                                    value={title}
+                                    value={url}
                                     onChange={(event) => {
-                                        setTitle(event.target.value);
+                                        setUrl(event.target.value);
                                     }}
                                     className={
-                                        titleError ? 'comment__form--error' : ''
+                                        urlError ? 'upload__form--error' : ''
                                     }
                                     id="title"
-                                    placeholder="Add a title to your video"
+                                    placeholder="e.g. https://i.imgur.com/ZYcodqt.jpg"
                                     required
                                 />
                             </div>
@@ -90,8 +97,8 @@ function UploadForm() {
                                 <div
                                     className={
                                         titleError
-                                            ? 'comment__error'
-                                            : 'comment__error--hidden'
+                                            ? 'upload__error'
+                                            : 'upload__error--hidden'
                                     }
                                 >
                                     Invalid Title: Must be greater than 3
@@ -104,7 +111,7 @@ function UploadForm() {
                                         setTitle(event.target.value);
                                     }}
                                     className={
-                                        titleError ? 'comment__form--error' : ''
+                                        titleError ? 'upload__form--error' : ''
                                     }
                                     id="title"
                                     placeholder="Add a title to your video"
@@ -116,8 +123,8 @@ function UploadForm() {
                                 <div
                                     className={
                                         descriptionError
-                                            ? 'comment__error'
-                                            : 'comment__error--hidden'
+                                            ? 'upload__error'
+                                            : 'upload__error--hidden'
                                     }
                                 >
                                     Invalid Description: Must be greater than 3
@@ -133,7 +140,7 @@ function UploadForm() {
                                     }}
                                     className={
                                         descriptionError
-                                            ? 'comment__form--error'
+                                            ? 'upload__form--error'
                                             : ''
                                     }
                                     id="description"
