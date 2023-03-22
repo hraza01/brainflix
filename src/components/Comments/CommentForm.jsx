@@ -3,7 +3,7 @@ import commentAvatar from '@/assets/images/Mohan-muruge.jpg';
 import commentLogo from '@/assets/icons/add_comment.svg';
 import { starWars, uniqueNamesGenerator } from 'unique-names-generator';
 import { postComment } from '@/utils/services.js';
-import { commentValidator } from '@/utils/helpers.js';
+import { textValidator } from '@/utils/helpers.js';
 
 function CommentForm({ videoId, onComment }) {
     const [comment, setComment] = useState('');
@@ -11,7 +11,7 @@ function CommentForm({ videoId, onComment }) {
 
     useEffect(() => {
         if (comment) {
-            setError(!commentValidator(comment));
+            setError(!textValidator(comment));
         }
     }, [comment]);
 

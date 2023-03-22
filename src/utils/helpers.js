@@ -44,7 +44,7 @@ function formatPlayerTime(currentTime, duration) {
 
     return { time, dur };
 }
-function commentValidator(comment) {
+function textValidator(comment) {
     const pattern = new RegExp(/^(?![\s.]*$).{3,}$/);
 
     return pattern.test(comment);
@@ -52,4 +52,4 @@ function commentValidator(comment) {
 
 const { format } = new Intl.NumberFormat('en-US');
 
-export { fetchVideos, fetchVideo, formatPlayerTime, commentValidator, format };
+export { fetchVideos, fetchVideo, formatPlayerTime, textValidator, format };
