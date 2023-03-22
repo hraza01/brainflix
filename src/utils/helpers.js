@@ -51,7 +51,7 @@ function textValidator(comment) {
   return pattern.test(comment)
 }
 
-function imageValidator(image) {
+function urlValidator(image) {
   const pattern = new RegExp(
     /^$|^https?:\/\/(?:i\.)?imgur\.com\/\w+\.(?:jpg|jpeg)$/
   )
@@ -66,6 +66,6 @@ export {
   fetchVideo,
   formatPlayerTime,
   textValidator,
-  imageValidator,
+  urlValidator,
   format,
 }

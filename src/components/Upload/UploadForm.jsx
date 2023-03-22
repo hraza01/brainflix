@@ -4,7 +4,7 @@ import { uploadVideo } from '@/utils/services'
 import videoPreview from '@/assets/images/Upload-video-preview.jpg'
 import publishLogo from '@/assets/icons/publish.svg'
 import './Upload.scss'
-import { textValidator, imageValidator } from '@/utils/helpers.js'
+import { textValidator, urlValidator } from '@/utils/helpers.js'
 
 function UploadForm() {
   const navigate = useNavigate()
@@ -26,7 +26,7 @@ function UploadForm() {
 
     if (url) {
       // change this to URL validator
-      setUrlError(!imageValidator(url))
+      setUrlError(!urlValidator(url))
     }
   }, [title, description, url])
 
@@ -34,14 +34,17 @@ function UploadForm() {
     const video = {
       title,
       description,
+      url,
     }
 
-    const valid = textValidator(title) && textValidator(description)
+    const valid =
+      textValidator(title) && textValidator(description) && urlValidator(url)
 
     if (valid) {
       uploadVideo(video).then((res) => {
         setTitle('')
         setDescription('')
+        setUrl('')
         const message = `Your video ${res.title} has been uploaded to BrainFlix.`
         alert(message)
         navigate('/')
@@ -123,12 +126,13 @@ function UploadForm() {
                 <input
                   value={url}
                   onChange={(event) => {
+                    console.log(event.target.value)
                     setUrl(event.target.value)
                   }}
                   className={urlError ? 'upload__form--error' : ''}
                   id="title"
                   placeholder="e.g. https://i.imgur.com/ZYcodqt.jpg"
-                  required
+                  type="url"
                 />
               </div>
             </div>
