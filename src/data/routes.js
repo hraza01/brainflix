@@ -1,6 +1,6 @@
 const routes = {
-    videos: '/videos',
-    comments: '/comments',
-};
+  videos: '/videos',
+  comments: '/comments',
+}
 
-export default routes;
+export default routes

@@ -246,9 +246,9 @@
     opacity: .85;
     transition: opacity 150ms ease-in-out;
 
-        &:hover {
-            opacity: 1;
-        }
+    &:hover {
+        opacity: 1;
+    }
 
     @include abstracts.respond-to('tablet') {
         height: 4rem;
