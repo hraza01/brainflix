@@ -25,7 +25,6 @@ function UploadForm() {
     }
 
     if (url) {
-      // change this to URL validator
       setUrlError(!urlValidator(url))
     }
   }, [title, description, url])
@@ -126,7 +125,6 @@ function UploadForm() {
                 <input
                   value={url}
                   onChange={(event) => {
-                    console.log(event.target.value)
                     setUrl(event.target.value)
                   }}
                   className={urlError ? 'upload__form--error' : ''}
