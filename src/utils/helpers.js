@@ -1,30 +1,3 @@
-import axios from '@/data/axios.js'
-import routes from '@/data/routes.js'
-
-// sends a GET request to the API to get all videos and returns the data object.
-async function fetchVideos() {
-  try {
-    const response = await axios.get(routes.videos)
-    if (response.status === 200) {
-      return response.data
-    }
-  } catch (error) {
-    console.log(error)
-  }
-}
-
-// sends a GET request to the API to get one video and returns the data object.
-async function fetchVideo(videoId) {
-  try {
-    const response = await axios.get(`${routes.videos}/${videoId}`)
-    if (response.status === 200) {
-      return response.data
-    }
-  } catch (error) {
-    console.log(error)
-  }
-}
-
 function formatPlayerTime(currentTime, duration) {
   const minutes = Math.floor(currentTime / 60)
       .toString()
@@ -61,11 +34,4 @@ function urlValidator(image) {
 
 const { format } = new Intl.NumberFormat('en-US')
 
-export {
-  fetchVideos,
-  fetchVideo,
-  formatPlayerTime,
-  textValidator,
-  urlValidator,
-  format,
-}
+export { formatPlayerTime, textValidator, urlValidator, format }

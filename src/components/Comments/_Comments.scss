@@ -122,6 +122,15 @@
         transition: all 0.3s;
     }
 
+    &__like--liked {
+        fill: abstracts.color("primary", "BrainFlix-Blue");
+        color: abstracts.color("primary", "BrainFlix-Blue");
+
+        &:hover {
+            color: transparent;
+        }
+    }
+
     &__like:hover {
         color: abstracts.color("primary", "BrainFlix-Blue");
     }
