@@ -35,9 +35,10 @@ function Home() {
   } else {
     return (
       <>
-        <VideoPlayer video={currentVideo} />
+        <VideoPlayer key={currentVideo.id} video={currentVideo} />
         <div className="video__content-wrapper">
           <VideoDetail
+            key={currentVideo.id}
             video={currentVideo}
             updateVideoDetail={setCurrentVideo}
           />
