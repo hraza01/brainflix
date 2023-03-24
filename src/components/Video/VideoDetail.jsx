@@ -8,6 +8,7 @@ function VideoDetail({ video, updateVideoDetail }) {
   return (
     <div className="video__information">
       <VideoItem
+        id={video.id}
         title={video.title}
         channel={video.channel}
         timestamp={video.timestamp}

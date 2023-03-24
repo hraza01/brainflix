@@ -6,6 +6,7 @@ import './_Video.scss'
 
 function VideoPlayer({ video }) {
   const [isPlaying, setIsPlaying] = useState(false)
+  const [isMuted, setIsMuted] = useState(true)
   const [isWaiting, setIsWaiting] = useState(false)
   const [currentTime, setCurrentTime] = useState('00:00')
   const [currentSeek, setCurrentSeek] = useState(0)
@@ -64,6 +65,7 @@ function VideoPlayer({ video }) {
       setCurrentSeek((currentTime / duration) * 100)
     }
 
+    setCurrentSeek(0)
     element.addEventListener('play', onPlay)
     element.addEventListener('playing', onPlay)
     element.addEventListener('pause', onPause)
@@ -77,8 +79,8 @@ function VideoPlayer({ video }) {
       element.removeEventListener('waiting', onWaiting)
       element.removeEventListener('timeupdate', onTimeUpdate)
     }
-  }, [videoRef.current])
-
+  }, [video.id, videoRef.current])
+  console.log(videoRef)
   return (
     <div className="video__container">
       <div className="video__playerWrapper">
@@ -91,23 +93,27 @@ function VideoPlayer({ video }) {
           />
         )}
         <video
+          key={video.id}
           className="video__player"
-          src={`${video.video}?api_key=${import.meta.env.VITE_API_KEY}`}
+          src={`${video.video}`}
           poster={video.image}
-          muted
+          muted={isMuted}
           ref={videoRef}
           onClick={playPauseHandler}
           autoPlay={false}
         ></video>
-        <VideoPlayerControls
-          onPlayPause={playPauseHandler}
-          onFullScreen={fullScreenHandler}
-          playing={isPlaying}
-          currentTime={currentTime}
-          sliderValue={currentSeek}
-          duration={videoDuration}
-          videoRef={videoRef}
-        />
+        <div>
+          <VideoPlayerControls
+            id={video.id}
+            onPlayPause={playPauseHandler}
+            onFullScreen={fullScreenHandler}
+            playing={isPlaying}
+            muted={isMuted}
+            currentTime={currentTime}
+            sliderValue={currentSeek}
+            duration={videoDuration}
+          />
+        </div>
       </div>
     </div>
   )
