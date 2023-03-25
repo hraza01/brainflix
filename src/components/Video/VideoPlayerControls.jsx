@@ -1,9 +1,9 @@
-import { useState } from 'react'
 import ReactSlider from 'react-slider'
 import playIcon from '@/assets/icons/play.svg'
 import pauseIcon from '@/assets/icons/pause.svg'
 import fullscreenIcon from '@/assets/icons/fullscreen.svg'
 import volumeUpIcon from '@/assets/icons/volume_up.svg'
+import volumeOffIcon from '@/assets/icons/volume_off.svg'
 import './_Video.scss'
 
 const VideoPlayerControls = ({
@@ -14,9 +14,11 @@ const VideoPlayerControls = ({
   currentTime,
   duration,
   sliderValue,
+  isMuted,
+  toggleMute,
+  volume,
+  setVolume,
 }) => {
-  const [volumeLevel, setVolumeLevel] = useState(0)
-
   return (
     <div className="video__controlsWrapper">
       <div onClick={onPlayPause} className="video__controls">
@@ -47,9 +49,14 @@ const VideoPlayerControls = ({
           src={fullscreenIcon}
           alt="play icon"
         />
-        <img className="video__volume" src={volumeUpIcon} alt="play icon" />
+        <img
+          onClick={toggleMute}
+          className="video__volume"
+          src={isMuted ? volumeOffIcon : volumeUpIcon}
+          alt="play icon"
+        />
       </div>
-      <div className="video__controls">
+      <div className="video__controls video__volume-control">
         {/*volume*/}
         <ReactSlider
           className="video__slider--vertical"
@@ -57,8 +64,10 @@ const VideoPlayerControls = ({
           trackClassName="video__track--vertical"
           orientation="vertical"
           invert={true}
-          defaultValue={0}
-          value={0}
+          value={volume}
+          onChange={(e) => {
+            setVolume(e)
+          }}
         />
       </div>
     </div>

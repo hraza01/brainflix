@@ -6,11 +6,12 @@ import './_Video.scss'
 
 function VideoPlayer({ video }) {
   const [isPlaying, setIsPlaying] = useState(false)
-  const [isMuted, setIsMuted] = useState(true)
   const [isWaiting, setIsWaiting] = useState(false)
   const [currentTime, setCurrentTime] = useState('00:00')
   const [currentSeek, setCurrentSeek] = useState(0)
   const [videoDuration, setVideoDuration] = useState(video.duration)
+  const [volume, setVolume] = useState(0)
+  const [isMuted, setIsMuted] = useState(true)
 
   const videoRef = useRef(null)
 
@@ -35,8 +36,16 @@ function VideoPlayer({ video }) {
     }
   }
 
+  const toggleMute = () => {
+    if (!videoRef.current) return
+    const element = videoRef.current
+    element.muted = !element.muted
+    setIsMuted(!element.muted)
+  }
+
   useEffect(() => {
     if (!videoRef.current) return
+    const element = videoRef.current
 
     const onPlay = () => {
       setIsPlaying(true)
@@ -52,8 +61,6 @@ function VideoPlayer({ video }) {
       setIsWaiting(true)
     }
 
-    const element = videoRef.current
-
     const onTimeUpdate = () => {
       if (!videoRef.current) return
 
@@ -65,12 +72,17 @@ function VideoPlayer({ video }) {
       setCurrentSeek((currentTime / duration) * 100)
     }
 
-    setCurrentSeek(0)
+    const onVolumeChange = () => {
+      if (!videoRef.current) return
+      element.volume = volume / 100
+    }
+
     element.addEventListener('play', onPlay)
     element.addEventListener('playing', onPlay)
     element.addEventListener('pause', onPause)
     element.addEventListener('waiting', onWaiting)
     element.addEventListener('timeupdate', onTimeUpdate)
+    element.addEventListener('volumechange', onVolumeChange)
 
     return () => {
       element.removeEventListener('play', onPlay)
@@ -78,9 +90,10 @@ function VideoPlayer({ video }) {
       element.removeEventListener('pause', onPause)
       element.removeEventListener('waiting', onWaiting)
       element.removeEventListener('timeupdate', onTimeUpdate)
+      element.removeEventListener('volumechange', onVolumeChange)
     }
-  }, [video.id, videoRef.current])
-  console.log(videoRef)
+  }, [videoRef.current])
+
   return (
     <div className="video__container">
       <div className="video__playerWrapper">
@@ -97,21 +110,25 @@ function VideoPlayer({ video }) {
           className="video__player"
           src={`${video.video}`}
           poster={video.image}
-          muted={isMuted}
+          muted
           ref={videoRef}
           onClick={playPauseHandler}
           autoPlay={false}
         ></video>
         <div>
           <VideoPlayerControls
-            id={video.id}
+            // id={video.id}
             onPlayPause={playPauseHandler}
             onFullScreen={fullScreenHandler}
             playing={isPlaying}
-            muted={isMuted}
             currentTime={currentTime}
-            sliderValue={currentSeek}
             duration={videoDuration}
+            sliderValue={currentSeek}
+            currentVideo={videoRef}
+            isMuted={isMuted}
+            toggleMute={toggleMute}
+            volume={volume}
+            setVolume={setVolume}
           />
         </div>
       </div>
