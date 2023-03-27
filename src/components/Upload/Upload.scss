@@ -39,10 +39,21 @@
             }
 
             & textarea {
-                height: 8.4rem;
+                height: 12rem;
             }
         }
 
+        &--error {
+            @extend .form--error;
+        }
+    }
+
+    &__error {
+        @extend .error-box;
+
+        &--hidden {
+            display: none;
+        }
     }
 
     &__form-content {
@@ -75,6 +86,7 @@
 
 
     &__video-thumbnail {
+        margin-top: -0.15rem;
         border-radius: 4px;
     }
 
