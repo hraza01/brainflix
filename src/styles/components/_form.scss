@@ -13,12 +13,13 @@
     }
 
     & label {
+        display: block;
         color: abstracts.color('primary', 'Silver');
         font-weight: 600;
         font-size: 1.3rem;
         letter-spacing: 0.5px;
         text-transform: uppercase;
-        margin-bottom: 0.4rem;
+        margin-bottom: 0.6rem;
     }
 
     & input,
@@ -30,7 +31,7 @@
         border-radius: 4px;
         padding: 1.2rem;
         width: 100%;
-        margin-bottom: 2.4rem;
+        margin-bottom: 1.8rem;
         resize: none;
         transition: all 150ms ease-in-out;
 
@@ -45,4 +46,21 @@
             outline: 2px solid abstracts.color('primary', 'BrainFlix-Blue');
         }
     }
+}
+
+.error-box {
+    margin: 0 auto;
+    padding: 0.4rem 1.2rem;
+    border: 1px solid abstracts.color("conditional", "error-bg");
+    background-color: abstracts.color("conditional", "error-bg");
+    border-radius: 4px;
+    color: abstracts.color("primary", "White");
+
+    @include abstracts.respond-to("tablet") {
+        padding: 0.2rem 1.2rem;
+    }
+}
+
+.form--error {
+    outline: 1px solid abstracts.color('conditional', 'error') !important;
 }

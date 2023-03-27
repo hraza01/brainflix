@@ -25,18 +25,7 @@
     }
 
     &__error {
-        margin: 0 auto;
-        padding: 0.8rem 1.6rem;
-        border: 1px solid abstracts.color("conditional", "error-bg");
-        border-radius: 4px;
-        color: abstracts.color("conditional", "error");
-
-        @include abstracts.respond-to("tablet") {
-            padding: 0.8rem 2.4rem;
-        }
-
-        @include abstracts.respond-to("desktop") {
-        }
+        @extend .error-box;
 
         &--hidden {
             display: none;
@@ -47,7 +36,7 @@
         @extend .form;
 
         &--error {
-            outline: 1px solid abstracts.color('conditional', 'error') !important;
+            @extend .form--error;
         }
     }
 
@@ -131,6 +120,15 @@
         width: 2.4rem;
         height: 2.4rem;
         transition: all 0.3s;
+    }
+
+    &__like--liked {
+        fill: abstracts.color("primary", "BrainFlix-Blue");
+        color: abstracts.color("primary", "BrainFlix-Blue");
+
+        &:hover {
+            color: transparent;
+        }
     }
 
     &__like:hover {
